@@ -1,0 +1,413 @@
+{% comment %} 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank You Tree</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        
+        .tree-container {
+            position: relative;
+            width: 800px;
+            height: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .tree {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 700px;
+            background: url(https://th.bing.com/th/id/R.0e675d7b9315881b634ac0ab55e83911?rik=%2f4pAj%2b%2ft%2bw94Lg&riu=http%3a%2f%2fclipartmag.com%2fimages%2fcartoon-tree-clipart-4.png&ehk=CAp2wvJkgsnQs7J5tyTBtRPkb3aSsm1IzI%2f3qvpy1xw%3d&risl=&pid=ImgRaw&r=0) no-repeat center bottom;
+            background-size: contain;
+            transition: transform 1s;
+        }
+        
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            opacity: 0;
+            animation: fade-in 2s forwards;
+        }
+        
+        @keyframes grow {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pop-up {
+            0% {
+                transform: translate(-50%, 100%);
+            }
+            80% {
+                transform: translate(-50%, -50%);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+        
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tree-container">
+        <div class="tree"></div>
+        <div class="message" style="color:grey">Thank You for making this place better!</div>
+    </div>
+
+    <script>
+        // Trigger animations after the page loads
+        window.addEventListener('load', function() {
+            var tree = document.querySelector('.tree');
+            var message = document.querySelector('.message');
+
+            // Apply animations to the tree and message
+            tree.style.animation = 'pop-up 2s forwards';
+            message.style.animationDelay = '1s';
+        });
+    </script>
+</body>
+</html> {% endcomment %}
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Truck Animation Styles */
+        .truck-container {
+            position: absolute;
+            top: 50%;
+            left: -200px;
+            animation: truck-move 8s linear infinite;
+            transform: translateY(-50%);
+        }
+
+        .truck-image {
+            width: 300px;
+            height: auto;
+        }
+
+        /* Background Animation Styles */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('background.png');
+            background-size: cover;
+            animation: background-move 10s linear infinite;
+        }
+
+        /* Keyframe Animations */
+        @keyframes truck-move {
+            0% {
+                left: -200px;
+            }
+            100% {
+                left: calc(100% + 200px);
+            }
+        }
+
+        @keyframes background-move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -2000px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="truck-container">
+        <img src="https://th.bing.com/th/id/OIP.25_U_ox9GpvE2nXr0Jtg5wHaDt?pid=ImgDet&w=900&h=450&rs=1" alt="Garbage Truck" class="truck-image">
+    </div>
+</body>
+</html> {% endcomment %}
+
+
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* Road Styles */
+        .road {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background-color: gray;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        /* Truck Animation Styles */
+        .truck-container {
+            position: absolute;
+            top: 50%;
+            left: -300px;
+            transform: translateY(-50%);
+            animation: truck-move 5s linear forwards;
+            z-index: 2;
+        }
+
+        .truck-image {
+            width: 300px;
+            height: auto;
+        }
+
+        /* Text Styles */
+        .text-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 3;
+        }
+
+        .text {
+            font-size: 40px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Keyframe Animation */
+        @keyframes truck-move {
+            0% {
+                left: -300px;
+            }
+            50% {
+                left: calc(50% - 150px);
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Event-based JavaScript */
+        document.addEventListener('DOMContentLoaded', function() {
+            var textContainer = document.querySelector('.text-container');
+            var truckImage = document.querySelector('.truck-image');
+
+            truckImage.addEventListener('animationend', function() {
+                textContainer.style.opacity = 1;
+            });
+        });
+    </style>
+</head>
+<body>
+    <div class="road"></div>
+    <div class="truck-container">
+        <img src="https://th.bing.com/th/id/OIP.25_U_ox9GpvE2nXr0Jtg5wHaDt?pid=ImgDet&w=900&h=450&rs=1" alt="Garbage Truck" class="truck-image">
+    </div>
+    <div class="text-container">
+        <p class="text">Garbage will be collected soon</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var truckContainer = document.querySelector('.truck-container');
+            var road = document.querySelector('.road');
+            var textContainer = document.querySelector('.text-container');
+            var text = document.querySelector('.text');
+
+            var truckWidth = truckContainer.offsetWidth;
+            var roadWidth = road.offsetWidth;
+            var textContainerWidth = textContainer.offsetWidth;
+
+            truckContainer.style.left = `-${truckWidth}px`;
+            textContainer.style.opacity = 0;
+
+            setTimeout(function() {
+                truckContainer.style.left = `${roadWidth / 2 - truckWidth / 2}px`;
+            }, 1000);
+
+            setTimeout(function() {
+                textContainer.style.opacity = 1;
+            }, 3000);
+        });
+    </script>
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* Road Styles */
+        .road {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background-color: gray;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .road-markings {
+            position: relative;
+            height: 100%;
+        }
+
+        .road-marking {
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 20px;
+            background-color: white;
+            transform: translateY(-50%);
+        }
+
+        /* Truck Animation Styles */
+        .truck-container {
+            position: absolute;
+            top: 50%;
+            left: -300px;
+            transform: translateY(-50%);
+            animation: truck-move 5s linear forwards;
+            z-index: 2;
+        }
+
+        .truck-image {
+            width: 300px;
+            height: auto;
+        }
+
+        /* Text Styles */
+        .text-container {
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 3;
+        }
+
+        .text {
+            font-size: 24px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Keyframe Animation */
+        @keyframes truck-move {
+            0% {
+                left: -300px;
+            }
+            50% {
+                left: calc(50% - 150px);
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Event-based JavaScript */
+        document.addEventListener('DOMContentLoaded', function() {
+            var textContainer = document.querySelector('.text-container');
+            var truckImage = document.querySelector('.truck-image');
+
+            truckImage.addEventListener('animationend', function() {
+                textContainer.style.opacity = 1;
+            });
+        });
+    </style>
+</head>
+<body>
+    <div class="road">
+        <div class="road-markings">
+            <div class="road-marking"></div>
+            <div class="road-marking" style="left: 50%;"></div>
+            <div class="road-marking" style="left: 75%;"></div>
+            <div class="road-marking" style="left: 25%;"></div>
+        </div>
+    </div>
+    <div class="truck-container">
+        <img src="https://clipground.com/images/garbage-truck-clipart-8.jpg" alt="Garbage Truck" class="truck-image">
+    </div>
+    <div class="text-container">
+        <p class="text">Garbage will be collected soon</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var truckContainer = document.querySelector('.truck-container');
+            var road = document.querySelector('.road');
+            var textContainer = document.querySelector('.text-container');
+            var text = document.querySelector('.text');
+
+            var truckWidth = truckContainer.offsetWidth;
+            var roadWidth = road.offsetWidth;
+            var textContainerWidth = textContainer.offsetWidth;
+
+            truckContainer.style.left = `-${truckWidth}px`;
+            textContainer.style.opacity = 0;
+
+            setTimeout(function() {
+                truckContainer.style.left = `${roadWidth / 2 - truckWidth / 2}px`;
+            }, 1000);
+
+            setTimeout(function() {
+                textContainer.style.opacity = 1;
+            }, 2500);
+        });
+    </script>
+</body>
+</html>
